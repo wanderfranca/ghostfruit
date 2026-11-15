@@ -212,7 +212,7 @@ Desenvolvido com dedicação por **Wander França**:
 - **Website:** [suporteoberon.com.br](https://suporteoberon.com.br)
 - **GitHub:** [@wanderfranca](https://github.com/wanderfranca)
 - **LinkedIn:** [Wander França](https://www.linkedin.com/in/wanderfranca)
-- **E-mail:** [suporte@suporteoberon.com.br](mailto:suporte@suporteoberon.com.br)
+- **E-mail:** [contato@suporteoberon.com.br](mailto:contato@suporteoberon.com.br)
 
 ---
 
