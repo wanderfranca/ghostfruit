@@ -12,6 +12,7 @@ import {
 
 export interface PortfolioRenderOptions {
   isPortfolioMode: boolean;
+  isRecording?: boolean;
   playerName?: string;
   hud?: {
     score: number;
@@ -35,6 +36,30 @@ export class CanvasRenderer {
       throw new Error('Falha ao obter contexto 2D do Canvas');
     }
     this.ctx = context;
+    this.preloadCanvasFonts();
+  }
+
+  /**
+   * Pré-carrega no contexto do Canvas as fontes shinobi/arcade importadas no index.html.
+   * Evita que o Canvas renderize fontes padrão do sistema (Arial/Times) nas gravações de vídeo.
+   */
+  private preloadCanvasFonts(): void {
+    if (typeof document !== 'undefined' && document.fonts && document.fonts.load) {
+      const fontsToWarm = [
+        'bold 18px "Shojumaru"',
+        'bold 32px "Shojumaru"',
+        '700 12px "Rajdhani"',
+        '700 13px "Rajdhani"',
+        '700 16px "Rajdhani"',
+        'bold 20px "Rajdhani"',
+        '900 20px "Orbitron"',
+        '900 22px "Orbitron"',
+        '900 28px "Orbitron"',
+      ];
+      fontsToWarm.forEach((f) => {
+        document.fonts.load(f).catch(() => {});
+      });
+    }
   }
 
   public getContext(): CanvasRenderingContext2D {
@@ -133,7 +158,8 @@ export class CanvasRenderer {
     this.renderFloatingTexts(floatingTexts);
 
     // 12. Barra superior no topo do jogo (quando em modo portfólio para gravação limpa no LinkedIn)
-    if (isPortfolio && portfolioOptions?.hud) {
+    // Renderiza a barra de status se estiver em modo portfólio OU gravando vídeo
+    if ((isPortfolio || portfolioOptions?.isRecording) && portfolioOptions?.hud) {
       this.renderPortfolioTopBar(gameW, gameH, portfolioOptions.hud);
     }
 
@@ -163,61 +189,163 @@ export class CanvasRenderer {
     const ctx = this.ctx;
     ctx.save();
 
-    const barH = 46;
+    const barH = 52;
     const grad = ctx.createLinearGradient(0, 0, 0, barH);
-    grad.addColorStop(0, 'rgba(8, 12, 22, 0.95)');
-    grad.addColorStop(1, 'rgba(8, 12, 22, 0.65)');
+    grad.addColorStop(0, 'rgba(6, 9, 18, 0.96)');
+    grad.addColorStop(1, 'rgba(10, 15, 28, 0.88)');
     ctx.fillStyle = grad;
     ctx.fillRect(0, 0, gameW, barH);
 
-    ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
-    ctx.lineWidth = 1;
+    // Borda inferior com acento neon âmbar
+    ctx.strokeStyle = 'rgba(234, 88, 12, 0.5)';
+    ctx.lineWidth = 1.5;
     ctx.beginPath();
     ctx.moveTo(0, barH);
     ctx.lineTo(gameW, barH);
     ctx.stroke();
 
-    // Logo / Ícone
-    ctx.fillStyle = '#f97316';
-    ctx.font = 'bold 16px "Shojumaru", sans-serif';
-    ctx.fillText('⚔️ GHOST FRUIT', 16, 29);
+    // 1. Logo Shinobi com efeito de brilho
+    ctx.fillStyle = '#ff7b00';
+    ctx.shadowColor = 'rgba(234, 88, 12, 0.6)';
+    ctx.shadowBlur = 8;
+    ctx.font = 'bold 18px "Shojumaru", cursive, sans-serif';
+    ctx.fillText('⚔️ GHOST FRUIT', 18, 33);
+    ctx.shadowBlur = 0;
 
-    // Pontuação
-    ctx.fillStyle = '#cbd5e1';
-    ctx.font = 'bold 13px sans-serif';
-    ctx.fillText('Pontuação:', 185, 29);
+    // Calcular posições responsivas para se adaptar de mobile até ultrawide
+    const isNarrow = gameW < 720;
+    const scoreX = isNarrow ? Math.round(gameW * 0.28) : Math.round(gameW * 0.22);
+    const comboX = isNarrow ? Math.round(gameW * 0.48) : Math.round(gameW * 0.40);
+    const heartsX = isNarrow ? Math.round(gameW * 0.66) : Math.round(gameW * 0.58);
+    const timeX = gameW - (isNarrow ? 90 : 125);
+
+    // 2. Pontuação (Fontes Rajdhani e Orbitron)
+    ctx.fillStyle = '#94a3b8';
+    ctx.font = '700 12px "Rajdhani", sans-serif';
+    ctx.fillText('PONTOS', scoreX, 22);
+
     ctx.fillStyle = '#fde047';
-    ctx.font = 'bold 16px sans-serif';
-    ctx.fillText(`${hud.score}`, 262, 29);
+    ctx.shadowColor = 'rgba(253, 224, 71, 0.5)';
+    ctx.shadowBlur = 8;
+    ctx.font = '900 22px "Orbitron", monospace, sans-serif';
+    ctx.fillText(`${hud.score}`, scoreX, 44);
+    ctx.shadowBlur = 0;
 
-    // Combo
-    ctx.fillStyle = '#cbd5e1';
-    ctx.font = 'bold 13px sans-serif';
-    ctx.fillText('Combo:', 315, 29);
-    ctx.fillStyle = hud.comboMultiplier > 1 ? '#38bdf8' : '#94a3b8';
-    ctx.font = 'bold 16px sans-serif';
-    ctx.fillText(`x${hud.comboMultiplier}`, 370, 29);
+    // 3. Combo
+    ctx.fillStyle = '#94a3b8';
+    ctx.font = '700 12px "Rajdhani", sans-serif';
+    ctx.fillText('COMBO', comboX, 22);
 
-    // Vidas
-    ctx.fillStyle = '#cbd5e1';
-    ctx.font = 'bold 13px sans-serif';
-    ctx.fillText('Vidas:', 425, 29);
-    let heartsStr = '';
-    for (let i = 0; i < hud.hearts; i++) heartsStr += '❤️ ';
-    for (let i = hud.hearts; i < 5; i++) heartsStr += '🤍 ';
-    ctx.font = '14px sans-serif';
-    ctx.fillText(heartsStr.trim(), 472, 29);
+    ctx.fillStyle = hud.comboMultiplier > 1 ? '#38bdf8' : '#64748b';
+    if (hud.comboMultiplier > 1) {
+      ctx.shadowColor = 'rgba(56, 189, 248, 0.6)';
+      ctx.shadowBlur = 8;
+    }
+    ctx.font = '900 20px "Orbitron", monospace, sans-serif';
+    ctx.fillText(`x${hud.comboMultiplier}`, comboX, 44);
+    ctx.shadowBlur = 0;
 
-    // Tempo
+    // 4. Vidas (Corações vetoriais nítidos com gradiente rubi)
+    ctx.fillStyle = '#94a3b8';
+    ctx.font = '700 12px "Rajdhani", sans-serif';
+    ctx.fillText('VIDAS', heartsX, 22);
+
+    const heartSize = 16;
+    const heartSpacing = 19;
+    const heartY = 30;
+    for (let i = 0; i < 5; i++) {
+      const isFilled = i < hud.hearts;
+      this.drawCanvasHeart(
+        ctx,
+        heartsX + i * heartSpacing + heartSize / 2,
+        heartY,
+        heartSize,
+        isFilled
+      );
+    }
+
+    // 5. Tempo
     const m = Math.floor(hud.remainingSeconds / 60);
     const s = hud.remainingSeconds % 60;
     const timeStr = `${m}:${s < 10 ? '0' : ''}${s}`;
-    ctx.fillStyle = hud.remainingSeconds <= 15 ? '#f87171' : '#fde047';
-    ctx.font = 'bold 15px sans-serif';
-    ctx.fillText(`⏱️ ${timeStr}`, gameW - 100, 29);
+
+    ctx.fillStyle = '#94a3b8';
+    ctx.font = '700 12px "Rajdhani", sans-serif';
+    ctx.fillText('TEMPO', timeX, 22);
+
+    const isLowTime = hud.remainingSeconds <= 15;
+    ctx.fillStyle = isLowTime ? '#f87171' : '#fde047';
+    ctx.shadowColor = isLowTime ? 'rgba(239, 68, 68, 0.7)' : 'rgba(253, 224, 71, 0.5)';
+    ctx.shadowBlur = 8;
+    ctx.font = '900 20px "Orbitron", monospace, sans-serif';
+    ctx.fillText(timeStr, timeX, 44);
+    ctx.shadowBlur = 0;
 
     ctx.restore();
   }
+
+  /**
+   * Desenha corações vetoriais nítidos em alta definição (1080p) no Canvas.
+   * Substitui os emojis de texto Unicode que ficavam desfocados ou apagados nas gravações de vídeo.
+   */
+  private drawCanvasHeart(
+    ctx: CanvasRenderingContext2D,
+    cx: number,
+    cy: number,
+    size: number,
+    filled: boolean
+  ): void {
+    ctx.save();
+    ctx.beginPath();
+    const topCurveHeight = size * 0.3;
+    ctx.moveTo(cx, cy + topCurveHeight);
+    // Curva superior esquerda
+    ctx.bezierCurveTo(
+      cx, cy,
+      cx - size / 2, cy,
+      cx - size / 2, cy + topCurveHeight
+    );
+    // Curva inferior esquerda
+    ctx.bezierCurveTo(
+      cx - size / 2, cy + (size + topCurveHeight) / 2,
+      cx, cy + (size + topCurveHeight) / 2,
+      cx, cy + size
+    );
+    // Curva inferior direita
+    ctx.bezierCurveTo(
+      cx, cy + (size + topCurveHeight) / 2,
+      cx + size / 2, cy + (size + topCurveHeight) / 2,
+      cx + size / 2, cy + topCurveHeight
+    );
+    // Curva superior direita
+    ctx.bezierCurveTo(
+      cx + size / 2, cy,
+      cx, cy,
+      cx, cy + topCurveHeight
+    );
+    ctx.closePath();
+
+    if (filled) {
+      const grad = ctx.createLinearGradient(cx, cy, cx, cy + size);
+      grad.addColorStop(0, '#f87171');
+      grad.addColorStop(1, '#dc2626');
+      ctx.fillStyle = grad;
+      ctx.shadowColor = 'rgba(239, 68, 68, 0.7)';
+      ctx.shadowBlur = 6;
+      ctx.fill();
+      ctx.strokeStyle = '#ffffff';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    } else {
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.08)';
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+      ctx.lineWidth = 1.2;
+      ctx.stroke();
+    }
+    ctx.restore();
+  }
+
 
   /**
    * Renderiza a seção inferior do portfólio inspirada no print anexado:
@@ -294,7 +422,7 @@ export class CanvasRenderer {
     const badgeY = col1Y + colH - badgeH - 12;
     const badgeX = col1X + 12;
     const badgeText = 'AO VIVO • WEBCAM';
-    ctx.font = 'bold 11px sans-serif';
+    ctx.font = '700 12px "Rajdhani", sans-serif';
     const badgeTextW = ctx.measureText(badgeText).width;
     const badgeW = badgeTextW + 28;
 
@@ -349,13 +477,16 @@ export class CanvasRenderer {
     // Nome: Wander França
     const textX = barX + barW + 16;
     ctx.fillStyle = '#ffffff';
-    ctx.font = 'bold 28px "Shojumaru", sans-serif';
-    ctx.fillText('Wander França', textX, barY + 25);
+    ctx.font = 'bold 32px "Shojumaru", cursive, sans-serif';
+    ctx.shadowColor = 'rgba(255, 255, 255, 0.35)';
+    ctx.shadowBlur = 8;
+    ctx.fillText('Wander França', textX, barY + 26);
+    ctx.shadowBlur = 0;
 
     // Cargos / Subtítulo: DEV FullStack | Data Scientist | Head Support
-    ctx.fillStyle = '#cbd5e1';
-    ctx.font = '600 15px sans-serif';
-    ctx.fillText('DEV FullStack | Data Scientist | Head Support', textX, barY + 49);
+    ctx.fillStyle = '#94a3b8';
+    ctx.font = '700 16px "Rajdhani", sans-serif';
+    ctx.fillText('DEV FullStack | Data Scientist | Head Support', textX, barY + 52);
 
     // Badges / Tags
     const badgeRowY = barY + 84;
@@ -366,16 +497,16 @@ export class CanvasRenderer {
     // Site oficial & Portfólio: suporteoberon.com.br/wander-franca/
     const siteY = badgeRowY + 44;
     ctx.fillStyle = '#00d2ff';
-    ctx.font = 'bold 18px sans-serif';
-    ctx.shadowColor = 'rgba(0, 210, 255, 0.5)';
-    ctx.shadowBlur = 8;
+    ctx.font = 'bold 20px "Rajdhani", "Orbitron", monospace, sans-serif';
+    ctx.shadowColor = 'rgba(0, 210, 255, 0.6)';
+    ctx.shadowBlur = 10;
     ctx.fillText('suporteoberon.com.br/wander-franca/', textX, siteY);
     ctx.shadowBlur = 0;
 
     // Stacks e versões solicitadas pelo usuário:
     const stackY = siteY + 28;
     ctx.fillStyle = '#94a3b8';
-    ctx.font = '500 13px sans-serif';
+    ctx.font = '600 14px "Rajdhani", sans-serif';
     ctx.fillText(
       'Ghost Fruit • React 19 • TypeScript 5.9 • Vite 6 • MediaPipe Tasks Vision 0.10.22 • Tailwind CSS 3.4',
       textX,
@@ -411,7 +542,7 @@ export class CanvasRenderer {
     textColor: string
   ): void {
     ctx.save();
-    ctx.font = 'bold 11px sans-serif';
+    ctx.font = '700 13px "Rajdhani", sans-serif';
     const textW = ctx.measureText(text).width;
     const padX = 10;
     const h = 22;
@@ -1118,14 +1249,19 @@ export class CanvasRenderer {
       ctx.translate(t.x, t.y);
       ctx.scale(t.scale, t.scale);
 
-      ctx.font = '900 24px "Shojumaru", "Orbitron", sans-serif';
+      ctx.font = '900 28px "Orbitron", "Shojumaru", sans-serif';
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
 
-      // Sombra preta para legibilidade sobre a câmera
-      ctx.strokeStyle = 'rgba(0, 0, 0, 0.85)';
-      ctx.lineWidth = 5;
+      // Borda preta espessa para contraste total contra a câmera
+      ctx.strokeStyle = 'rgba(5, 7, 15, 0.95)';
+      ctx.lineWidth = 6;
+      ctx.lineJoin = 'round';
       ctx.strokeText(t.text, 0, 0);
+
+      // Preenchimento com brilho neon
+      ctx.shadowColor = t.color;
+      ctx.shadowBlur = 12;
 
       // Texto colorido brilhante
       ctx.fillStyle = t.color;

@@ -374,6 +374,7 @@ export const App: React.FC = () => {
           currentTime,
           {
             isPortfolioMode: activePortfolio,
+            isRecording,
             playerName,
             hud: {
               score,
