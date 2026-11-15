@@ -46,15 +46,8 @@ Todo o processamento de Machine Learning roda **100% no dispositivo (client-side
       </td>
     </tr>
     <tr>
-      <td align="center" width="50%">
-        <img src="docs/screenshots/calibration.jpg" alt="Assistente de Calibração Shinobi" width="100%" />
-        <br />
-        <b>Assistente de Calibração: Alinhamento de Mão e Precisão</b>
       </td>
-      <td align="center" width="50%">
-        <img src="docs/screenshots/gameplay-reach.png" alt="Mapeamento de Alcance e Tela Dividida" width="100%" />
-        <br />
-        <b>Mapeamento de Alcance Confortável & Layout Split Screen</b>
+     
       </td>
     </tr>
   </table>
