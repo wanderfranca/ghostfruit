@@ -67,6 +67,7 @@ Todo o processamento de Machine Learning roda **100% no dispositivo (client-side
 - Sons de deslocamento de ar (*whoosh*), impacto metálico de katana (*zing*), estalo de polpa, explosão de bombas, sino de combos e ativação do modo Super.
 
 ### 6. 🎥 Gravação HD de Partidas (MP4 / WebM)
+- **HUD Vetorial Nítido no Vídeo:** Placar, multiplicador de combo, cronômetro e corações renderizados com curvas de Bézier em alta definição, garantindo clareza máxima em 1080p.
 - Gravação direta do canvas a 30 FPS via `MediaRecorder`.
 - **Áudio Sincronizado sem Cortes:** Sistema de *keep-alive* inaudível que mantém o relógio de áudio fluindo continuamente no container MP4, evitando que o navegador descarte a faixa sonora nos intervalos de silêncio.
 - **Mixagem de Microfone Opcional:** Permite gravar sua própria voz/webcam falando e comemorando durante a partida.
