@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "description": "Ghost Fruit - Jogo de corte de frutas com lâmina shinobi em visão computacional em tempo real (MediaPipe + React 19 + TypeScript)",
   "author": "Wander França <suporte@suporteoberon.com.br>",
+  "homepage": "https://suporteoberon.com.br/wander-franca/",
   "type": "module",
   "scripts": {
     "dev": "vite",

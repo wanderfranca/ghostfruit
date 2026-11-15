@@ -21,7 +21,7 @@
 
 ## 👨‍💻 Sobre o Projeto
 
-Olá! Eu sou **Wander França** (DEV FullStack & Data Scientist). Desenvolvi o **Ghost Fruit** com o objetivo de unir **visão computacional de ponta**, **engenharia de software moderna** e **física de jogos arcade** diretamente no navegador web, sem necessidade de instalar aplicativos nativos ou plugins externos.
+Olá! Eu sou **Wander França** (DEV FullStack & Data Scientist) — você pode conferir minha trajetória e outros projetos no meu [Portfólio Oficial](https://suporteoberon.com.br/wander-franca/). Desenvolvi o **Ghost Fruit** com o objetivo de unir **visão computacional de ponta**, **engenharia de software moderna** e **física de jogos arcade** diretamente no navegador web, sem necessidade de instalar aplicativos nativos ou plugins externos.
 
 No Ghost Fruit, a sua webcam vira o cenário do jogo. Ao posicionar sua mão em frente à câmera e estender o **dedo indicador**, a ponta do seu dedo se torna a ponta de uma **Katana Shinobi**, capaz de fatiar frutas no ar com detecção contínua de colisão (CCD), desaceleração de tempo (Super Chakra), combos acrobáticos e gravação de vídeo em alta definição com áudio sincronizado.
 
@@ -76,7 +76,7 @@ Todo o processamento de Machine Learning roda **100% no dispositivo (client-side
 - Quando o jogador se chama **Wander França**, a tela ganha uma composição demonstrativa para LinkedIn e portfólio técnico:
   - **Topo:** Jogo ao vivo com lâmina shinobi.
   - **Base Esquerda (30%):** Webcam ao vivo em destaque.
-  - **Base Direita (70%):** Cartão de engenharia com competências em FullStack & Data Science, links e stack.
+  - **Base Direita (70%):** Cartão de engenharia com competências em FullStack & Data Science, link direto para o portfólio oficial ([suporteoberon.com.br/wander-franca](https://suporteoberon.com.br/wander-franca/)) e stack tecnológica.
 
 ---
 
@@ -209,6 +209,7 @@ ghostfruit/
 
 Desenvolvido com dedicação por **Wander França**:
 
+- **Portfólio Oficial:** [suporteoberon.com.br/wander-franca](https://suporteoberon.com.br/wander-franca/)
 - **Website:** [suporteoberon.com.br](https://suporteoberon.com.br)
 - **GitHub:** [@wanderfranca](https://github.com/wanderfranca)
 - **LinkedIn:** [Wander França](https://www.linkedin.com/in/wanderfranca)

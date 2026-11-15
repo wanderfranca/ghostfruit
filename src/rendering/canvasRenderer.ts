@@ -363,13 +363,13 @@ export class CanvasRenderer {
     this.drawTextBadge(ctx, textX + 115, badgeRowY, '🧠 Visão Computacional', '#38bdf8', '#e0f2fe');
     this.drawTextBadge(ctx, textX + 295, badgeRowY, '📊 Data Scientist', '#a855f7', '#f3e8ff');
 
-    // Site oficial: suporteoberon.com.br
+    // Site oficial & Portfólio: suporteoberon.com.br/wander-franca/
     const siteY = badgeRowY + 44;
     ctx.fillStyle = '#00d2ff';
-    ctx.font = 'bold 20px sans-serif';
+    ctx.font = 'bold 18px sans-serif';
     ctx.shadowColor = 'rgba(0, 210, 255, 0.5)';
     ctx.shadowBlur = 8;
-    ctx.fillText('suporteoberon.com.br', textX, siteY);
+    ctx.fillText('suporteoberon.com.br/wander-franca/', textX, siteY);
     ctx.shadowBlur = 0;
 
     // Stacks e versões solicitadas pelo usuário:
