@@ -1,0 +1,33 @@
+{
+  "name": "ghost-fruit",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Ghost Fruit - Jogo de corte de frutas com lâmina shinobi em visão computacional em tempo real (MediaPipe + React 19 + TypeScript)",
+  "author": "Wander França <suporte@suporteoberon.com.br>",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@mediapipe/tasks-vision": "^0.10.22",
+    "canvas-confetti": "^1.9.4",
+    "lucide-react": "^1.16.0",
+    "mp4-muxer": "^5.2.2",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
+  },
+  "devDependencies": {
+    "@types/canvas-confetti": "^1.9.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-basic-ssl": "^2.0.0",
+    "@vitejs/plugin-react": "^5.1.4",
+    "autoprefixer": "^10.6.2",
+    "postcss": "^8.5.33",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.9.3",
+    "vite": "^6.4.1"
+  }
+}

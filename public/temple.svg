@@ -1,0 +1,257 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1600" width="100%" height="100%">
+  <defs>
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fdf8e6" />
+      <stop offset="50%" stop-color="#faedd0" />
+      <stop offset="85%" stop-color="#f4e0be" />
+      <stop offset="100%" stop-color="#ecd2ab" />
+    </linearGradient>
+
+    <radialGradient id="sunGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#dc2626" />
+      <stop offset="75%" stop-color="#b91c1c" />
+      <stop offset="100%" stop-color="#991b1b" />
+    </radialGradient>
+
+    <linearGradient id="templeGlow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ef4444" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#991b1b" stop-opacity="0.8" />
+    </linearGradient>
+
+    <filter id="mistBlur" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" />
+    </filter>
+  </defs>
+
+  <!-- Sky Canvas -->
+  <rect width="1200" height="1600" fill="url(#skyGrad)" />
+
+  <!-- Giant Crimson Sun Disc -->
+  <circle cx="600" cy="740" r="410" fill="url(#sunGrad)" />
+
+  <!-- Atmospheric Background Clouds / Distant Foliage (Right) -->
+  <g fill="#f1aa93" opacity="0.65">
+    <ellipse cx="940" cy="580" rx="140" ry="60" />
+    <ellipse cx="1020" cy="540" rx="110" ry="50" />
+    <ellipse cx="880" cy="620" rx="90" ry="40" />
+    <ellipse cx="980" cy="670" rx="130" ry="55" />
+    <ellipse cx="1080" cy="730" rx="120" ry="50" />
+    <ellipse cx="950" cy="760" rx="150" ry="65" />
+    <ellipse cx="860" cy="830" rx="110" ry="45" />
+    <ellipse cx="1020" cy="840" rx="140" ry="60" />
+  </g>
+
+  <!-- Distant Foliage (Left) -->
+  <g fill="#e07d67" opacity="0.75">
+    <ellipse cx="240" cy="480" rx="130" ry="45" />
+    <ellipse cx="180" cy="520" rx="90" ry="35" />
+    <ellipse cx="280" cy="540" rx="100" ry="40" />
+    <ellipse cx="140" cy="620" rx="120" ry="45" />
+    <ellipse cx="220" cy="660" rx="140" ry="50" />
+    <ellipse cx="110" cy="710" rx="90" ry="35" />
+    <ellipse cx="190" cy="780" rx="130" ry="50" />
+  </g>
+
+  <!-- Midground Pine Leaves (Russet / Amber Red Clouds) -->
+  <g fill="#8f2b2b">
+    <!-- Left Pine Foliage Clumps -->
+    <path d="M120 450 C80 430, 40 460, 60 480 C30 490, 40 520, 80 525 C120 530, 160 510, 180 490 C210 470, 180 440, 120 450 Z" />
+    <path d="M180 340 C140 320, 100 350, 120 375 C80 385, 90 415, 140 420 C190 425, 230 400, 240 375 C260 350, 230 325, 180 340 Z" />
+    <path d="M90 560 C50 540, 20 575, 40 600 C10 610, 20 645, 70 650 C120 655, 170 635, 180 610 C200 580, 160 550, 90 560 Z" />
+    <path d="M220 580 C180 560, 150 590, 170 615 C140 630, 160 660, 200 665 C250 670, 290 645, 300 620 C310 595, 270 565, 220 580 Z" />
+    <path d="M70 680 C30 670, 10 705, 30 730 C5 745, 20 775, 60 780 C110 785, 150 760, 160 735 C170 705, 130 685, 70 680 Z" />
+    <path d="M180 730 C140 715, 120 745, 140 770 C110 785, 130 815, 170 820 C220 825, 260 800, 265 775 C275 745, 230 725, 180 730 Z" />
+    <path d="M220 840 C180 825, 160 855, 180 880 C150 895, 170 925, 210 930 C260 935, 300 910, 305 885 C315 855, 270 835, 220 840 Z" />
+  </g>
+
+  <!-- Left Pine Trunk & Gnarled Branches (Midnight Ink) -->
+  <g fill="#111625">
+    <!-- Big Left Trunk -->
+    <path d="M-20 1200 Q120 1020 90 850 Q70 720 140 640 Q160 620 180 580 Q190 540 160 480 Q130 420 170 380 L185 390 Q150 430 180 480 Q210 530 195 580 Q180 620 155 645 Q85 730 110 860 Q140 1020 0 1210 Z" />
+    <!-- Branch 1 -->
+    <path d="M125 760 Q70 730 60 700 L75 695 Q85 720 135 745 Z" />
+    <!-- Branch 2 -->
+    <path d="M145 640 Q110 610 85 580 L100 575 Q125 600 155 625 Z" />
+    <!-- Branch 3 to the right toward temple -->
+    <path d="M165 640 Q210 660 260 640 L265 655 Q210 675 155 655 Z" />
+    <!-- Branch 4 -->
+    <path d="M185 580 Q230 600 280 590 L285 605 Q230 615 175 595 Z" />
+    <!-- Branch 5 top -->
+    <path d="M170 480 Q120 470 100 450 L115 440 Q130 460 175 465 Z" />
+  </g>
+
+  <!-- ================= SAMURAI TEMPLE PAGODA ================= -->
+
+  <!-- Temple Interior Red Glow (Behind columns) -->
+  <rect x="360" y="1040" width="480" height="180" fill="url(#templeGlow)" />
+  <rect x="420" y="850" width="360" height="90" fill="url(#templeGlow)" opacity="0.8" />
+  <rect x="460" y="690" width="280" height="60" fill="url(#templeGlow)" opacity="0.8" />
+
+  <!-- Temple Structure Silhouette & Beams (Midnight Ink #111625 / #090c15) -->
+  <g fill="#111625">
+    <!-- Top Spire (Sorin) -->
+    <rect x="597" y="230" width="6" height="140" />
+    <!-- Spire Jewel / Top Ornament -->
+    <polygon points="600,210 594,235 606,235" />
+    <!-- Spire Rings (Kurumagata) -->
+    <rect x="588" y="250" width="24" height="5" rx="2" />
+    <rect x="588" y="262" width="24" height="5" rx="2" />
+    <rect x="588" y="274" width="24" height="5" rx="2" />
+    <rect x="588" y="286" width="24" height="5" rx="2" />
+    <rect x="588" y="298" width="24" height="5" rx="2" />
+    <rect x="588" y="310" width="24" height="5" rx="2" />
+    <rect x="588" y="322" width="24" height="5" rx="2" />
+    <rect x="588" y="334" width="24" height="5" rx="2" />
+    <rect x="588" y="346" width="24" height="5" rx="2" />
+    <!-- Spire Base -->
+    <polygon points="575,370 625,370 610,355 590,355" />
+
+    <!-- ----------------- TIER 3 (TOP ROOF) ----------------- -->
+    <!-- Gable Peak -->
+    <path d="M600 370 Q520 450 440 480 Q530 465 600 465 Q670 465 760 480 Q680 450 600 370 Z" />
+    <!-- Ridge Eaves -->
+    <path d="M420 485 Q510 470 600 470 Q690 470 780 485 L795 470 Q695 450 600 450 Q505 450 405 470 Z" />
+    <!-- Inner Ridge detail -->
+    <path d="M600 400 L560 450 L640 450 Z" />
+    <polygon points="590,405 610,405 620,445 580,445" fill="#c2410c" />
+    <!-- Sub-tier wall & columns -->
+    <rect x="470" y="480" width="260" height="40" />
+    <rect x="500" y="480" width="12" height="40" fill="#06080e" />
+    <rect x="550" y="480" width="12" height="40" fill="#06080e" />
+    <rect x="638" y="480" width="12" height="40" fill="#06080e" />
+    <rect x="688" y="480" width="12" height="40" fill="#06080e" />
+
+    <!-- ----------------- TIER 2 (MIDDLE ROOF) ----------------- -->
+    <!-- Flared Curved Roof Canopy -->
+    <path d="M270 550 Q435 520 600 520 Q765 520 930 550 L955 525 Q775 490 600 490 Q425 490 245 525 Z" />
+    <!-- Eave Under-Trim & Rafters -->
+    <rect x="310" y="545" width="580" height="15" rx="3" />
+    <g fill="#070910">
+      <rect x="330" y="555" width="8" height="10" />
+      <rect x="360" y="555" width="8" height="10" />
+      <rect x="390" y="555" width="8" height="10" />
+      <rect x="420" y="555" width="8" height="10" />
+      <rect x="450" y="555" width="8" height="10" />
+      <rect x="480" y="555" width="8" height="10" />
+      <rect x="510" y="555" width="8" height="10" />
+      <rect x="540" y="555" width="8" height="10" />
+      <rect x="570" y="555" width="8" height="10" />
+      <rect x="600" y="555" width="8" height="10" />
+      <rect x="630" y="555" width="8" height="10" />
+      <rect x="660" y="555" width="8" height="10" />
+      <rect x="690" y="555" width="8" height="10" />
+      <rect x="720" y="555" width="8" height="10" />
+      <rect x="750" y="555" width="8" height="10" />
+      <rect x="780" y="555" width="8" height="10" />
+      <rect x="810" y="555" width="8" height="10" />
+      <rect x="840" y="555" width="8" height="10" />
+      <rect x="870" y="555" width="8" height="10" />
+    </g>
+
+    <!-- Balcony / Railing (Koranso) -->
+    <rect x="330" y="570" width="540" height="25" />
+    <rect x="340" y="565" width="520" height="4" fill="#c2410c" />
+    <rect x="340" y="585" width="520" height="5" />
+    <!-- Balcony Posts -->
+    <g fill="#111625">
+      <rect x="370" y="565" width="6" height="25" />
+      <rect x="410" y="565" width="6" height="25" />
+      <rect x="450" y="565" width="6" height="25" />
+      <rect x="490" y="565" width="6" height="25" />
+      <rect x="530" y="565" width="6" height="25" />
+      <rect x="570" y="565" width="6" height="25" />
+      <rect x="630" y="565" width="6" height="25" />
+      <rect x="670" y="565" width="6" height="25" />
+      <rect x="710" y="565" width="6" height="25" />
+      <rect x="750" y="565" width="6" height="25" />
+      <rect x="790" y="565" width="6" height="25" />
+      <rect x="830" y="565" width="6" height="25" />
+    </g>
+
+    <!-- Mid Tier Structure Columns -->
+    <rect x="380" y="595" width="440" height="70" />
+    <!-- Center Gable on Middle Tier -->
+    <path d="M600 600 L530 660 L670 660 Z" fill="#0b0e18" />
+    <path d="M600 610 L545 658 L655 658 Z" fill="#c2410c" />
+
+    <!-- ----------------- TIER 1 (LOWER / MAIN ROOF) ----------------- -->
+    <!-- Huge Sweeping Flared Roof -->
+    <path d="M120 730 Q360 670 600 670 Q840 670 1080 730 L1115 695 Q850 630 600 630 Q350 630 85 695 Z" />
+    <rect x="180" y="725" width="840" height="20" rx="4" />
+
+    <!-- Lower Gable / Triangle -->
+    <path d="M600 710 L440 810 L760 810 Z" fill="#090c15" />
+    <path d="M600 725 L460 805 L740 805 Z" fill="#c2410c" />
+
+    <!-- Main Hall Entablature -->
+    <rect x="250" y="790" width="700" height="40" />
+
+    <!-- Pillars / Columns of the Main Hall -->
+    <g fill="#0b0e18">
+      <rect x="290" y="830" width="24" height="390" />
+      <rect x="390" y="830" width="20" height="390" />
+      <rect x="490" y="830" width="22" height="390" />
+      <rect x="589" y="830" width="22" height="390" />
+      <rect x="688" y="830" width="22" height="390" />
+      <rect x="790" y="830" width="20" height="390" />
+      <rect x="886" y="830" width="24" height="390" />
+    </g>
+
+    <!-- Transom and Door Frames (Shoji Screen Lines) -->
+    <g stroke="#111625" stroke-width="4" fill="none">
+      <line x1="314" y1="920" x2="390" y2="920" />
+      <line x1="410" y1="920" x2="490" y2="920" />
+      <line x1="512" y1="920" x2="589" y2="920" />
+      <line x1="611" y1="920" x2="688" y2="920" />
+      <line x1="710" y1="920" x2="790" y2="920" />
+      <line x1="810" y1="920" x2="886" y2="920" />
+
+      <line x1="314" y1="1020" x2="390" y2="1020" />
+      <line x1="410" y1="1020" x2="490" y2="1020" />
+      <line x1="512" y1="1020" x2="589" y2="1020" />
+      <line x1="611" y1="1020" x2="688" y2="1020" />
+      <line x1="710" y1="1020" x2="790" y2="1020" />
+      <line x1="810" y1="1020" x2="886" y2="1020" />
+    </g>
+
+    <!-- Foundation Podium (Stonework) -->
+    <rect x="230" y="1220" width="740" height="50" rx="3" />
+    <rect x="200" y="1270" width="800" height="40" rx="3" fill="#070910" />
+
+    <!-- Stone Staircase (Ishidan) Leading up to Entrance -->
+    <g fill="#f1d6b8" stroke="#111625" stroke-width="5">
+      <polygon points="460,1270 740,1270 730,1295 470,1295" />
+      <polygon points="445,1295 755,1295 745,1320 455,1320" />
+      <polygon points="430,1320 770,1320 760,1350 440,1350" />
+      <polygon points="415,1350 785,1350 775,1385 425,1385" />
+      <polygon points="400,1385 800,1385 790,1425 410,1425" />
+      <polygon points="380,1425 820,1425 810,1470 390,1470" />
+    </g>
+
+    <!-- Foreground Stone Courtyard & Garden Stones (Black Silhouettes) -->
+    <path d="M-50 1420 Q200 1380 400 1430 L400 1650 L-50 1650 Z" />
+    <path d="M800 1430 Q1000 1380 1250 1420 L1250 1650 L800 1650 Z" />
+    <path d="M300 1470 Q600 1440 900 1470 L900 1650 L300 1650 Z" />
+
+    <!-- Small Garden Bonsai / Shrubs Near Steps -->
+    <g fill="#8f2b2b">
+      <!-- Left small bonsai -->
+      <ellipse cx="280" cy="1260" rx="55" ry="25" />
+      <ellipse cx="320" cy="1235" rx="45" ry="20" />
+      <ellipse cx="250" cy="1285" rx="60" ry="25" />
+      <!-- Right small bonsai -->
+      <ellipse cx="920" cy="1260" rx="55" ry="25" />
+      <ellipse cx="880" cy="1235" rx="45" ry="20" />
+      <ellipse cx="950" cy="1285" rx="60" ry="25" />
+    </g>
+
+    <g fill="#111625">
+      <path d="M260 1320 Q280 1280 270 1255 L285 1255 Q295 1280 280 1320 Z" />
+      <path d="M940 1320 Q920 1280 930 1255 L915 1255 Q905 1280 920 1320 Z" />
+    </g>
+  </g>
+
+  <!-- Traditional Japanese Border Frame (Top/Bottom Mats) -->
+  <rect x="0" y="0" width="1200" height="28" fill="#111625" />
+  <rect x="0" y="1572" width="1200" height="28" fill="#111625" />
+</svg>

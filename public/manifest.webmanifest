@@ -1,0 +1,18 @@
+{
+  "name": "Ghost Fruit - Shinobi Blade",
+  "short_name": "Ghost Fruit",
+  "description": "Corte frutas com a ponta do dedo usando a câmera do seu dispositivo no estilo Shinobi!",
+  "start_url": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#08090d",
+  "theme_color": "#ff7a00",
+  "icons": [
+    {
+      "src": "mascot.jpg",
+      "sizes": "192x192 512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ]
+}
