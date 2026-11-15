@@ -29,32 +29,6 @@ Todo o processamento de Machine Learning roda **100% no dispositivo (client-side
 
 ---
 
-## 📸 Demonstração Visual
-
-<div align="center">
-  <table>
-    <tr>
-      <td align="center" width="50%">
-        <img src="docs/screenshots/start-screen.png" alt="Tela Inicial do Ghost Fruit" width="100%" />
-        <br />
-        <b>Tela Inicial: Seleção de Modos, Recordes e Cenário Shinobi</b>
-      </td>
-      <td align="center" width="50%">
-        <img src="docs/screenshots/katana-training.png" alt="Treino da Katana e Botões Cortáveis" width="100%" />
-        <br />
-        <b>Treino de Katana: Botões Cortáveis no Ar com a Lâmina</b>
-      </td>
-    </tr>
-    <tr>
-      </td>
-     
-      </td>
-    </tr>
-  </table>
-</div>
-
----
-
 ## ⚡ Principais Funcionalidades
 
 ### 1. 🗡️ Rastreamento de Lâmina por Visão Computacional
